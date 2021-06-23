@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Cypress Tests by Priyam
 
 on: [push]
 
