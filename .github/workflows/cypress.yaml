@@ -9,9 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       
-      - name: Edit watcher
-        run: |
-          echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+      
       - run: npm ci
       - run: npm run start:ci:windows & npx wait-on http://localhost:8080
 
