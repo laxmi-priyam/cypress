@@ -1,6 +1,6 @@
 name: Chrome Docker
 
-on: push
+on: [pull_request]
 
 jobs:
   # run Chrome inside a Docker container
