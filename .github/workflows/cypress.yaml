@@ -1,0 +1,24 @@
+name: Cypress Tests
+
+on: [push]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      
+      - name: Edit watcher
+        run: |
+          npm install
+          npm run start:ci:windows
+          sudo npm install -g browserstack-cypress-cli
+      
+      - name: BrowserStack Test
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        run : |
+          browserstack-cypress run --sync
+              

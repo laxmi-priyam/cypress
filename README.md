@@ -75,6 +75,8 @@ npm install
 
 ## start the local webserver
 npm start
+
+npm run start:ci:windows
 ```
 
 The `npm start` script will spawn a webserver on port `8080` which hosts the Kitchen Sink App.
