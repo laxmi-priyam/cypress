@@ -11,9 +11,13 @@ jobs:
       
       - name: Edit watcher
         run: |
-          npm install
-          npm run start:ci:windows
-          npm install -g browserstack-cypress-cli
+          echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+        
+        - run: npm ci
+        - run: sudo npm i -g pm2
+        - run: npm run build
+        - run: npm start
+        - run : sudo npm install -g browserstack-cypress-cli
       
       - name: BrowserStack Test
         env:
